@@ -1,0 +1,7 @@
+suites:
+    lock_suite:
+        namespace: BenConstable
+        src_path: src/
+        spec_path: tests/
+
+formatter.name: pretty

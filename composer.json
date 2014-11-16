@@ -1,0 +1,30 @@
+{
+    "name": "benconstable/lock",
+    "type": "library",
+    "description": "Simple object-oriented file lock management",
+    "keywords": ["lock", "filelock", "flock"],
+    "homepage": "http://github.com/BenConstable/lock",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Constable",
+            "email": "ben@benconstable.co.uk",
+            "homepage": "http://www.benconstable.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">= 5.3"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.1.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+            "BenConstable\\": "src/BenConstable/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
