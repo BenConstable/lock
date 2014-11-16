@@ -31,7 +31,7 @@ try {
 
     // Lock successful...
 
-    // Release lock. Optionaly, as resource will also be released automatically
+    // Release lock. Optional, as resource will also be released automatically
     // when the lock object is destroyed
 
     $lock->release();
