@@ -27,8 +27,14 @@ Add the following to your `composer.json`:
 $lock = new BenConstable\Lock\Lock('/path/to/file.txt');
 
 try {
-    $lock->aquire();
+    $lock->acquire();
+
     // Lock successful...
+
+    // Release lock. Optionaly, as resource will also be released automatically
+    // when the lock object is destroyed
+
+    $lock->release();
 } catch (BenConstable\Lock\Exception\LockException $e) {
     // Lock failed...
 }
