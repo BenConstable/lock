@@ -1,6 +1,6 @@
 # Lock
 
-The standard PHP `flock` function is old and difficult to test against. This
+The standard PHP `flock` function is difficult to test against. This
 library provides a modern, object-oriented wrapper to `flock`.
 
 ## Installation
