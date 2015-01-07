@@ -27,6 +27,18 @@ class LockSpec extends ObjectBehavior
         $this->release();
     }
 
+    function it_acquires_a_lock_on_a_non_existing_file()
+    {
+        $this->beConstructedWith($this->lockTestPath . '/test-lock-not-exists.txt');
+
+        $this->acquire()
+            ->shouldBe($this);
+
+        $this->release();
+
+        unlink($this->lockTestPath . '/test-lock-not-exists.txt');
+    }
+
     function it_returns_the_same_lock_when_locking_more_than_once()
     {
         $this->beConstructedWith($this->lockTestPath . '/test-lock.txt');
@@ -46,15 +58,6 @@ class LockSpec extends ObjectBehavior
         $lock->acquire();
 
         $this->beConstructedWith($this->lockTestPath . '/test-lock.txt');
-
-        $this
-            ->shouldThrow('BenConstable\Lock\Exception\LockException')
-            ->during('acquire');
-    }
-
-    function it_fails_to_acquire_a_lock_on_a_non_existing_file()
-    {
-        $this->beConstructedWith($this->lockTestPath . '/test-lock-not-exists.txt');
 
         $this
             ->shouldThrow('BenConstable\Lock\Exception\LockException')
