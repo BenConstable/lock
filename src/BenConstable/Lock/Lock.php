@@ -64,7 +64,7 @@ class Lock
     public function acquire()
     {
         if (!$this->locked) {
-            $this->fp = @fopen($this->filePath, 'r');
+            $this->fp = @fopen($this->filePath, 'w');
 
             if (!$this->fp || !flock($this->fp, LOCK_EX | LOCK_NB)) {
                 throw new LockException("Could not get lock on {$this->filePath}");
