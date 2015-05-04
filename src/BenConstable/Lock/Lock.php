@@ -57,16 +57,20 @@ class Lock
     /**
      * Acquire a lock on the resource.
      *
+     * @param boolean $block Specifies whether or not the method call should block 
+     *   execution until existing locks are released. Defaults to false.
+     * 
      * @return \BenConstable\Lock\Lock This, for chaining
      *
      * @throws \BenConstable\Lock\Exception\LockException If lock could not be acquired
      */
-    public function acquire()
+    public function acquire($block = false)
     {
         if (!$this->locked) {
             $this->fp = @fopen($this->filePath, 'a');
 
-            if (!$this->fp || !flock($this->fp, LOCK_EX | LOCK_NB)) {
+            $block_flag = $block ? 0 : LOCK_NB;
+            if (!$this->fp || !flock($this->fp, LOCK_EX | $block_flag)) {
                 throw new LockException("Could not get lock on {$this->filePath}");
             } else {
                 $this->locked = true;
